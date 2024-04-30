@@ -34,6 +34,8 @@ export class ChatInputComponent {
   // valuetw = model.required<ChatMessage | null>();
   myId = input.required<string>();
   inputVal = signal<string>('');
+
+  
   contactId = uuidv4();
   sendMessage(message: string, $event: Event) {
     this.emitValue(message);

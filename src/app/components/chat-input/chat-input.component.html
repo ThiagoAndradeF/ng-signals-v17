@@ -1,14 +1,14 @@
-<form (ngSubmit)="sendMessage(inputVal(), $event)" class="w-full flex gap-2 items-center" >
+<form (ngSubmit)="sendMessage(inputVal(), $event)" class="w-full flex gap-2 items-center">
   <textarea
     name="message"
     (keyup.enter)="sendMessage(inputVal(), $event)"
     rows="1"
     [(ngModel)]="inputVal"
-    [disabled]="desabInput" 
+    [disabled]="desabInput"
     class="resize-none textarea text-base-content textarea-bordered w-full"
     placeholder="Say something..."
   ></textarea>
-  <button class="btn btn-square btn-outline" type="submit">
+  <button class="btn btn-square btn-outline" type="submit" [disabled]="!inputVal || inputVal().trim().length === 0 || desabInput">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
