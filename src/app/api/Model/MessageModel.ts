@@ -1,3 +1,3 @@
 export class MessageModel{
-    constructor(public message: string) {}
+    constructor(public text: string) {}
 }

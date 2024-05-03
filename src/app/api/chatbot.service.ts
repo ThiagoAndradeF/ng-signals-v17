@@ -8,7 +8,7 @@ import { MessageModel } from './Model/MessageModel';
 })
 export class ChatBotService {
   constructor(private http: HttpClient) {}
-  private apiUrl = 'http://localhost:5000';
+  private apiUrl = 'http://localhost:5185';
 
   // sendMessage(message: string): Observable<string> {
   //   const messagePayload = { text: message };
@@ -27,7 +27,7 @@ export class ChatBotService {
   //   });
   // }
   sendMessage(message: string): Observable<MessageModel> {
-    const url = `${this.apiUrl}/respostaRobo`;
+    const url = `${this.apiUrl}/Main`;
     const data = { Text: message };  // Note a mudança para 'Text' para corresponder ao backend
   
     return this.http.post<MessageModel>(url, data, {
@@ -36,11 +36,11 @@ export class ChatBotService {
       },
       responseType: 'json'
     }).pipe(
-      map(response => new MessageModel(response.message))  // Transforma a resposta JSON em MessageModel
+      map(response => new MessageModel(response.text))  // Transforma a resposta JSON em MessageModel
     );
   }
-  getMessage(): Observable<string> {
-    return this.http.get<string>(`${this.apiUrl}/respostaDoisRobo`)
-  }
+  // getMessage(): Observable<string> {
+  //   return this.http.get<string>(`${this.apiUrl}/respostaDoisRobo`)
+  // }
 
 }

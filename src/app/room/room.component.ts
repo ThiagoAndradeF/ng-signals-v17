@@ -44,15 +44,15 @@ export class RoomComponent {
       this.messages.update((messages) => [...messages, this.newMessage()!]);
       this.cdRef.detectChanges();
       var mensagem  
-      this._chatbotService.getMessage().subscribe((data => {
-        mensagem = data 
-        console.warn(mensagem)
-        this.desabInput = false;
-      } ));
+      // this._chatbotService.getMessage().subscribe((data => {
+      //   mensagem = data 
+      //   console.warn(mensagem)
+      //   this.desabInput = false;
+      // } ));
       
       this._chatbotService.sendMessage(this.textNewMessageRequest).subscribe((data => {
         this.newMessageResponse.set({
-            text: data.message,
+            text: data.text,
             id: uuidv4(),
             userId: this.contactId,
             createdAt: Date.now(),
